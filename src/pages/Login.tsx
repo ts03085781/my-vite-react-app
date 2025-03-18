@@ -25,15 +25,17 @@ const Login = () => {
 
   return (
     <div>
-      <h1>login page</h1>
+      <h1 className="text-6xl font-bold underline">login page</h1>
       <br />
       <input
+        className="border-2 border-gray-300 rounded-md p-2"
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
       <br />
       <input
+        className="border-2 border-gray-300 rounded-md p-2"
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
