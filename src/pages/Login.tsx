@@ -25,7 +25,7 @@ const Login = () => {
 
   return (
     <div>
-      <h1 className="text-6xl font-bold underline">login page</h1>
+      <h1 className="text-6xl font-bold">login page</h1>
       <br />
       <input
         className="border-2 border-gray-300 rounded-md p-2"
