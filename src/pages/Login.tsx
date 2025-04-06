@@ -3,19 +3,25 @@ import {
   setUserInfoName,
   setUserInfoEmail,
 } from '../store/slices/userInfoSlice';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { resetUserInfo } from '../store/slices/userInfoSlice';
+import { Button, Input, Form } from 'antd';
 
 const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [form] = Form.useForm();
 
-  const handleLogin = () => {
-    dispatch(setUserInfoName(name));
-    dispatch(setUserInfoEmail(email));
+  const handleLogin = (values: { name: string; email: string }) => {
+    dispatch(setUserInfoName(values.name));
+    dispatch(setUserInfoEmail(values.email));
+    navigate('/home');
+  };
+
+  const handleGuestLogin = () => {
+    dispatch(setUserInfoName('Guest'));
+    dispatch(setUserInfoEmail('Guest'));
     navigate('/home');
   };
 
@@ -30,38 +36,43 @@ const Login = () => {
           登入
         </h2>
 
-        <div className="space-y-4">
-          <div>
-            <label className="block text-gray-700 text-sm font-medium mb-2">
-              帳號
-            </label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+        <Form
+          form={form}
+          onFinish={handleLogin}
+          layout="vertical"
+          className="space-y-4"
+        >
+          <Form.Item
+            name="name"
+            label="帳號"
+            rules={[{ required: true, message: '請輸入帳號' }]}
+          >
+            <Input
+              placeholder="請輸入帳號"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
-          </div>
+          </Form.Item>
 
-          <div>
-            <label className="block text-gray-700 text-sm font-medium mb-2">
-              電子郵件
-            </label>
-            <input
+          <Form.Item
+            name="email"
+            label="電子郵件"
+            rules={[{ required: true, message: '請輸入電子郵件' }]}
+          >
+            <Input
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              placeholder="請輸入電子郵件"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
-          </div>
+          </Form.Item>
 
           <div className="flex justify-between space-x-4 mt-6">
-            <button
-              onClick={handleLogin}
+            <Button
+              type="primary"
+              htmlType="submit"
               className="w-1/2 bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors"
             >
               登入
-            </button>
+            </Button>
             <Link
               to="/register"
               className="w-1/2 bg-gray-200 text-gray-700 py-2 rounded-md hover:bg-gray-300 transition-colors text-center"
@@ -69,7 +80,15 @@ const Login = () => {
               註冊
             </Link>
           </div>
-        </div>
+          <div>
+            <button
+              onClick={handleGuestLogin}
+              className="w-full bg-gray-200 text-gray-700 py-2 rounded-md hover:bg-gray-300 transition-colors text-center"
+            >
+              訪客登入
+            </button>
+          </div>
+        </Form>
       </div>
     </div>
   );
