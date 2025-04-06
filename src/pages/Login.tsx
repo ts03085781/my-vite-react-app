@@ -45,7 +45,10 @@ const Login = () => {
           <Form.Item
             name="name"
             label="帳號"
-            rules={[{ required: true, message: '請輸入帳號' }]}
+            rules={[
+              { required: true, message: '請輸入帳號' },
+              { pattern: /^[a-zA-Z0-9]+$/, message: '帳號只能包含英文字母或數字' }
+            ]}
           >
             <Input
               placeholder="請輸入帳號"
@@ -56,7 +59,10 @@ const Login = () => {
           <Form.Item
             name="email"
             label="電子郵件"
-            rules={[{ required: true, message: '請輸入電子郵件' }]}
+            rules={[
+              { required: true, message: '請輸入電子郵件' },
+              { type: 'email', message: '請輸入正確格式的 Email！' }
+            ]}
           >
             <Input
               type="email"
