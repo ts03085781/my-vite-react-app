@@ -1,9 +1,8 @@
 // ProtectedRoute.tsx
-import React, { ReactElement } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { useAppSelector } from '../hooks/redux';
 
-const ProtectedRoute = ({ element }: { element: ReactElement }) => {
+const ProtectedRoute = () => {
   const userName = useAppSelector((state) => state.userInfo.name);
   const userEmail = useAppSelector((state) => state.userInfo.email);
   const isAuthenticated = userName && userEmail;
@@ -12,7 +11,7 @@ const ProtectedRoute = ({ element }: { element: ReactElement }) => {
     return <Navigate to="/login" />;
   }
 
-  return element;
+  return <Outlet />;
 };
 
 export default ProtectedRoute;

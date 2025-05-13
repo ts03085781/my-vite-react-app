@@ -10,12 +10,18 @@ const Register = lazy(() => import('../pages/Register'));
 
 export const AppRoutes = () => (
   <Routes>
+    {/* 公開路由 */}
     <Route path="/login" element={<Login />} />
     <Route path="/register" element={<Register />} />
-    <Route path="*" element={<NotFound />} />
 
-    <Route path="/" element={<ProtectedRoute element={<Home />} />} />
-    <Route path="/home" element={<ProtectedRoute element={<Home />} />} />
-    <Route path="/about" element={<ProtectedRoute element={<About />} />} />
+    {/* 受保護的路由 */}
+    <Route element={<ProtectedRoute />}>
+      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/about" element={<About />} />
+    </Route>
+
+    {/* 404 頁面 */}
+    <Route path="*" element={<NotFound />} />
   </Routes>
 );
