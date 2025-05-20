@@ -1,12 +1,30 @@
 import { BrowserRouter } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { ConfigProvider, theme as antdTheme } from 'antd';
 import { AppRoutes } from './routes/AppRoutes';
-import './App.css';
+import { selectTheme } from './types';
 
 function App() {
+  const theme = useSelector(selectTheme);
+
   return (
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
+    <ConfigProvider
+      theme={{
+        algorithm:
+          theme === 'dark'
+            ? antdTheme.darkAlgorithm
+            : antdTheme.defaultAlgorithm,
+        token: {
+          colorPrimary: '#1677ff',
+        },
+      }}
+    >
+      <div className={theme === 'dark' ? 'dark' : 'light'}>
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+      </div>
+    </ConfigProvider>
   );
 }
 

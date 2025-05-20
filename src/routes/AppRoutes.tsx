@@ -1,27 +1,30 @@
 import { Routes, Route } from 'react-router-dom';
-import { lazy } from 'react';
-import ProtectedRoute from './ProtectedRoute';
+import { lazy, Suspense } from 'react';
+import MainLayout from '../layout/MainLayout';
 
-const Home = lazy(() => import('../pages/Home'));
-const About = lazy(() => import('../pages/About'));
+// 延遲加載頁面
+const Introduction = lazy(() => import('../pages/Introduction'));
+const Portfolio1 = lazy(() => import('../pages/Portfolio1'));
 const NotFound = lazy(() => import('../pages/NotFound'));
-const Login = lazy(() => import('../pages/Login'));
-const Register = lazy(() => import('../pages/Register'));
 
 export const AppRoutes = () => (
-  <Routes>
-    {/* 公開路由 */}
-    <Route path="/login" element={<Login />} />
-    <Route path="/register" element={<Register />} />
+  <Suspense
+    fallback={
+      <div className="flex items-center justify-center h-screen">
+        Loading...
+      </div>
+    }
+  >
+    <Routes>
+      <Route element={<MainLayout />}>
+        {/* 主要路由 */}
+        <Route path="/" element={<Introduction />} />
+        <Route path="/introduction" element={<Introduction />} />
+        <Route path="/portfolio1" element={<Portfolio1 />} />
 
-    {/* 受保護的路由 */}
-    <Route element={<ProtectedRoute />}>
-      <Route path="/" element={<Home />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/about" element={<About />} />
-    </Route>
-
-    {/* 404 頁面 */}
-    <Route path="*" element={<NotFound />} />
-  </Routes>
+        {/* 404 頁面 */}
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
+  </Suspense>
 );
