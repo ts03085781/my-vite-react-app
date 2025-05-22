@@ -1,7 +1,7 @@
 import { Typography, Card, Row, Col, Image, Tag, Button } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { GithubOutlined, LinkOutlined } from '@ant-design/icons';
-import { PortfolioItems } from '../types/portfolio';
+import { PortfolioItems } from '@/types/portfolio';
 
 const { Title, Paragraph } = Typography;
 

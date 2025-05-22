@@ -1,11 +1,11 @@
-import { useAppDispatch } from '../hooks/redux';
+import { useAppDispatch } from '@/hooks/redux';
 import {
   setUserInfoName,
   setUserInfoEmail,
-} from '../store/slices/userInfoSlice';
+} from '@/store/slices/userInfoSlice';
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { resetUserInfo } from '../store/slices/userInfoSlice';
+import { resetUserInfo } from '@/store/slices/userInfoSlice';
 import { Button, Input, Form } from 'antd';
 
 const Login = () => {
@@ -47,7 +47,10 @@ const Login = () => {
             label="帳號"
             rules={[
               { required: true, message: '請輸入帳號' },
-              { pattern: /^[a-zA-Z0-9]+$/, message: '帳號只能包含英文字母或數字' }
+              {
+                pattern: /^[a-zA-Z0-9]+$/,
+                message: '帳號只能包含英文字母或數字',
+              },
             ]}
           >
             <Input
@@ -61,7 +64,7 @@ const Login = () => {
             label="電子郵件"
             rules={[
               { required: true, message: '請輸入電子郵件' },
-              { type: 'email', message: '請輸入正確格式的 Email！' }
+              { type: 'email', message: '請輸入正確格式的 Email！' },
             ]}
           >
             <Input

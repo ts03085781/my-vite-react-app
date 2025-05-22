@@ -77,12 +77,9 @@ const MainLayout = () => {
         collapsed={collapsed}
         className="bg-white text-gray-800 dark:bg-gray-900 dark:text-white"
       >
-        <div className="p-4 text-center text-xl font-bold text-gray-800 dark:text-white">
-          Portfolio
-        </div>
         <Menu
           theme={theme === 'dark' ? 'dark' : 'light'}
-          mode="inline"
+          // mode="inline"
           selectedKeys={[location.pathname]}
           className="bg-white text-gray-800 dark:bg-gray-900 dark:text-white"
           items={sidebarItems}

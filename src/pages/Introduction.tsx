@@ -14,39 +14,108 @@ import {
   GithubOutlined,
   LinkedinOutlined,
   MailOutlined,
-  UserOutlined,
+  PhoneOutlined,
 } from '@ant-design/icons';
+import avatarImage from '@/assets/images/maskRider.jpg';
 
 const { Title, Paragraph } = Typography;
 
 const Introduction = () => {
   const { t } = useTranslation();
 
+  // 在組件外部定義數據
+  const TRADING_PLATFORMS = [
+    {
+      name: 'Vantage',
+      url: 'https://www.vantagemarkets.com/',
+    },
+    {
+      name: 'Vantage Japan',
+      url: 'https://www.vantagetradings.com/',
+    },
+    {
+      name: 'Star Trader',
+      url: 'https://www.startrader.com/',
+    },
+    {
+      name: 'Moneta Markets',
+      url: 'https://www.monetamarkets.com/',
+    },
+    {
+      name: 'Ultim Markets',
+      url: 'https://www.ultimamarkets.com/',
+    },
+    {
+      name: 'VT Market',
+      url: 'https://www.vtmarkets.com/',
+    },
+    {
+      name: 'Pu Prime',
+      url: 'https://www.puprime.com/',
+    },
+  ];
+
+  // 在組件外部定義數據
+  const SKILLS_DATA = [
+    {
+      title: t('page.introduction.skills.programming'),
+      items: ['JavaScript', 'TypeScript', 'HTML', 'Tailwind CSS', 'Css, Sass'],
+    },
+    {
+      title: t('page.introduction.skills.framework'),
+      items: ['Vue', 'React', 'Next', 'jQuery', 'Vite'],
+    },
+    {
+      title: t('page.introduction.skills.other'),
+      items: [
+        'Vuex, Redux',
+        'Element-UI',
+        'Ant Design',
+        'Tailwind CSS',
+        'Styled-components',
+        'i18n',
+        'Storybook',
+        'Cypress',
+        'CI/CD',
+      ],
+    },
+  ];
+
   return (
     <div className="max-w-6xl mx-auto">
       <Row gutter={[24, 24]} className="flex flex-col md:flex-row">
         <Col xs={24} md={8}>
           <Card className="text-center mb-6">
-            <Avatar size={120} icon={<UserOutlined />} className="mb-4" />
-            <Title level={3}>Your Name</Title>
-            <Paragraph>Frontend Developer</Paragraph>
+            <Avatar
+              src={avatarImage}
+              size={120}
+              className="mb-4"
+              alt="avatar"
+            />
+            <Title level={3}>{t('page.introduction.name')}</Title>
+            <Paragraph>{t('page.introduction.jobTitle')}</Paragraph>
             <Space size="middle">
               <Button
                 type="link"
                 icon={<GithubOutlined />}
-                href="https://github.com"
+                href="https://github.com/ts03085781"
                 target="_blank"
               />
               <Button
                 type="link"
                 icon={<LinkedinOutlined />}
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/%E6%AF%85%E9%9C%96-%E8%B3%B4-773966173/"
                 target="_blank"
               />
               <Button
                 type="link"
                 icon={<MailOutlined />}
-                href="mailto:your-email@example.com"
+                href="mailto:ts03085781@gmail.com"
+              />
+              <Button
+                type="link"
+                icon={<PhoneOutlined />}
+                href="tel:+886 0960081103"
               />
             </Space>
           </Card>
@@ -55,82 +124,252 @@ const Introduction = () => {
         <Col xs={24} md={16}>
           <Card>
             <Title level={2}>{t('page.introduction.title')}</Title>
-            <Paragraph>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-              facilisi. Phasellus euismod, nisi vel tincidunt bibendum, nunc
-              nisl ultrices nunc, vel lacinia nisl nunc vel nunc. Phasellus
-              euismod, nisi vel tincidunt bibendum.
-            </Paragraph>
+            <Paragraph>{t('page.introduction.description')}</Paragraph>
             <Divider />
 
-            <Title level={3}>Skills</Title>
+            <Title level={3}>{t('page.introduction.skills.title')}</Title>
             <Row gutter={[16, 16]}>
-              <Col xs={12} sm={8} md={6}>
-                <Card size="small" title="Frontend">
-                  <ul className="list-disc list-inside">
-                    <li>React</li>
-                    <li>TypeScript</li>
-                    <li>Tailwind CSS</li>
-                    <li>Ant Design</li>
-                  </ul>
-                </Card>
-              </Col>
-              <Col xs={12} sm={8} md={6}>
-                <Card size="small" title="Backend">
-                  <ul className="list-disc list-inside">
-                    <li>Node.js</li>
-                    <li>Express</li>
-                    <li>GraphQL</li>
-                    <li>MongoDB</li>
-                  </ul>
-                </Card>
-              </Col>
-              <Col xs={12} sm={8} md={6}>
-                <Card size="small" title="Tools">
-                  <ul className="list-disc list-inside">
-                    <li>Git</li>
-                    <li>Docker</li>
-                    <li>Webpack</li>
-                    <li>Vite</li>
-                  </ul>
-                </Card>
-              </Col>
-              <Col xs={12} sm={8} md={6}>
-                <Card size="small" title="Others">
-                  <ul className="list-disc list-inside">
-                    <li>UI/UX</li>
-                    <li>Agile</li>
-                    <li>Testing</li>
-                    <li>CI/CD</li>
-                  </ul>
-                </Card>
-              </Col>
+              {SKILLS_DATA.map((skillGroup) => (
+                <Col key={skillGroup.title} xs={12} sm={8} md={8}>
+                  <Card size="small" title={skillGroup.title}>
+                    <ul className="list-disc list-inside">
+                      {skillGroup.items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </Card>
+                </Col>
+              ))}
             </Row>
 
-            <Divider />
-            <Title level={3}>Experience</Title>
+            <Divider className="color-gray-500" />
+            <Title level={3}>{t('page.introduction.experience.title')}</Title>
             <Timeline
+              className="mt-4"
               items={[
                 {
                   children: (
                     <>
-                      <Title level={4}>Senior Frontend Developer</Title>
-                      <Paragraph>Company Name, 2020 - Present</Paragraph>
-                      <Paragraph>
-                        Developed and maintained modern web applications using
-                        React, TypeScript and other cutting-edge technologies.
+                      <Title level={4}>
+                        {t('page.introduction.experience.company_1.title')}
+                      </Title>
+                      <Paragraph className="font-bold text-green-700 dark:text-green-600">
+                        {t('page.introduction.experience.company_1.company')}
                       </Paragraph>
+                      <Paragraph className="font-bold text-gray-500 dark:text-gray-400">
+                        {t('page.introduction.experience.company_1.time')}
+                      </Paragraph>
+                      <Paragraph>
+                        <ul className="list-disc">
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_1.description.item_1'
+                            )}
+                          </li>
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_1.description.item_2'
+                            )}
+                          </li>
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_1.description.item_3'
+                            )}
+                          </li>
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_1.description.item_4'
+                            )}
+                          </li>
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_1.description.item_5'
+                            )}
+                          </li>
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_1.description.item_6'
+                            )}
+                          </li>
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_1.description.item_7'
+                            )}
+                          </li>
+                        </ul>
+                      </Paragraph>
+                      <Paragraph className="font-bold text-green-700 dark:text-green-600">
+                        {t('page.introduction.experience.company_1.more.title')}
+                      </Paragraph>
+                      <Paragraph>
+                        <ul className="list-disc">
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_1.more.item_1'
+                            )}
+                          </li>
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_1.more.item_2'
+                            )}
+                          </li>
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_1.more.item_3'
+                            )}
+                          </li>
+                        </ul>
+                      </Paragraph>
+                      <Paragraph className="font-bold text-green-700 dark:text-green-600">
+                        {t(
+                          'page.introduction.experience.company_1.websitesDeveloped'
+                        )}
+                      </Paragraph>
+                      <Paragraph>
+                        <ul className="list-none">
+                          {TRADING_PLATFORMS.map((platform) => (
+                            <li key={platform.url}>
+                              {platform.name} :
+                              <a
+                                className="text-blue-500 dark:text-blue-200"
+                                href={platform.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {platform.url}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </Paragraph>
+                      <Divider />
                     </>
                   ),
                 },
                 {
                   children: (
                     <>
-                      <Title level={4}>Junior Developer</Title>
-                      <Paragraph>Previous Company, 2018 - 2020</Paragraph>
+                      <Title level={4}>
+                        {t('page.introduction.experience.company_2.title')}
+                      </Title>
+                      <Paragraph className="font-bold text-green-700 dark:text-green-600">
+                        {t('page.introduction.experience.company_2.company')}
+                      </Paragraph>
+                      <Paragraph className="font-bold text-gray-500 dark:text-gray-400">
+                        {t('page.introduction.experience.company_2.time')}
+                      </Paragraph>
                       <Paragraph>
-                        Worked on frontend development and gained experience
-                        with React and related technologies.
+                        <ul className="list-disc">
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_2.description.item_1'
+                            )}
+                          </li>
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_2.description.item_2'
+                            )}
+                          </li>
+                        </ul>
+                      </Paragraph>
+                      <Paragraph className="font-bold text-green-700 dark:text-green-600">
+                        {t('page.introduction.experience.company_2.more.title')}
+                      </Paragraph>
+                      <Paragraph>
+                        <ul className="list-disc">
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_2.more.item_1'
+                            )}
+                          </li>
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_2.more.item_2'
+                            )}
+                          </li>
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_2.more.item_3'
+                            )}
+                          </li>
+                        </ul>
+                      </Paragraph>
+                      <Divider />
+                    </>
+                  ),
+                },
+                {
+                  children: (
+                    <>
+                      <Title level={4}>
+                        {t('page.introduction.experience.company_3.title')}
+                      </Title>
+                      <Paragraph className="font-bold text-green-700 dark:text-green-600">
+                        {t('page.introduction.experience.company_3.company')}
+                      </Paragraph>
+                      <Paragraph className="font-bold text-gray-500 dark:text-gray-400">
+                        {t('page.introduction.experience.company_3.time')}
+                      </Paragraph>
+                      <Paragraph>
+                        <ul className="list-disc">
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_3.description.item_1'
+                            )}
+                          </li>
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_3.description.item_2'
+                            )}
+                          </li>
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_3.description.item_3'
+                            )}
+                          </li>
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_3.description.item_4'
+                            )}
+                          </li>
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_3.description.item_5'
+                            )}
+                          </li>
+                        </ul>
+                      </Paragraph>
+                      <Paragraph className="font-bold text-green-700 dark:text-green-600">
+                        {t('page.introduction.experience.company_3.more.title')}
+                      </Paragraph>
+                      <Paragraph>
+                        <ul className="list-disc">
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_3.more.item_1'
+                            )}
+                          </li>
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_3.more.item_2'
+                            )}
+                          </li>
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_3.more.item_3'
+                            )}
+                          </li>
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_3.more.item_4'
+                            )}
+                          </li>
+                          <li>
+                            {t(
+                              'page.introduction.experience.company_3.more.item_5'
+                            )}
+                          </li>
+                        </ul>
                       </Paragraph>
                     </>
                   ),
