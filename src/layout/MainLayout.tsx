@@ -9,6 +9,8 @@ import {
   HomeOutlined,
   AppstoreOutlined,
   GlobalOutlined,
+  SunOutlined,
+  MoonOutlined,
 } from '@ant-design/icons';
 import { toggleTheme } from '../store/slices/themeSlice';
 import { changeLanguage } from '../store/slices/languageSlice';
@@ -68,45 +70,35 @@ const MainLayout = () => {
   ];
 
   return (
-    <Layout
-      className={`min-h-screen ${
-        theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-800'
-      }`}
-    >
+    <Layout className="min-h-screen bg-white text-gray-800 dark:bg-gray-900 dark:text-white">
       <Sider
         trigger={null}
         collapsible
         collapsed={collapsed}
-        className={`${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'}`}
+        className="bg-white text-gray-800 dark:bg-gray-900 dark:text-white"
       >
-        <div className="p-4 text-center text-xl font-bold">Portfolio</div>
+        <div className="p-4 text-center text-xl font-bold text-gray-800 dark:text-white">
+          Portfolio
+        </div>
         <Menu
           theme={theme === 'dark' ? 'dark' : 'light'}
           mode="inline"
           selectedKeys={[location.pathname]}
-          className={`${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'}`}
+          className="bg-white text-gray-800 dark:bg-gray-900 dark:text-white"
           items={sidebarItems}
         />
       </Sider>
       <Layout>
-        <Header
-          className={`p-0 flex items-center justify-between ${
-            theme === 'dark' ? 'bg-gray-800' : 'bg-blue-500'
-          }`}
-        >
+        <Header className="p-0 flex items-center justify-between bg-blue-500 dark:bg-gray-800">
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             onClick={() => setCollapsed(!collapsed)}
-            className={`w-16 h-16 ${
-              theme === 'dark' ? 'text-white' : 'text-white'
-            }`}
+            className="w-16 h-16 text-white"
           />
           <div className="flex items-center mr-6 space-x-4">
-            <div className="flex items-center">
-              <span className="mr-2 text-white">
-                {theme === 'dark' ? t('theme.dark') : t('theme.light')}
-              </span>
+            <div className="flex items-center mr-2 text-white gap-2">
+              {theme === 'dark' ? <MoonOutlined /> : <SunOutlined />}
               <Switch checked={theme === 'dark'} onChange={handleThemeChange} />
             </div>
             <Dropdown
@@ -118,21 +110,15 @@ const MainLayout = () => {
                 icon={<GlobalOutlined />}
                 className="text-white"
               >
-                {language === 'en' ? 'EN' : 'ZH'}
+                {language === 'en' ? 'English' : '繁體中文'}
               </Button>
             </Dropdown>
           </div>
         </Header>
-        <Content className="m-5 p-6 bg-white dark:bg-gray-700 rounded-lg min-h-[280px]">
+        <Content className="m-5 p-6 rounded-lg min-h-[280px] bg-white dark:bg-gray-700">
           <Outlet />
         </Content>
-        <Footer
-          className={`text-center ${
-            theme === 'dark'
-              ? 'bg-gray-800 text-white'
-              : 'bg-gray-100 text-gray-600'
-          }`}
-        >
+        <Footer className="text-center bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-white">
           ©{new Date().getFullYear()} My Portfolio - Created with React & Ant
           Design
         </Footer>

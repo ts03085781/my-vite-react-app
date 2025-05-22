@@ -19,7 +19,7 @@ function App() {
         },
       }}
     >
-      <div className={theme === 'dark' ? 'dark' : 'light'}>
+      <div className={theme}>
         <BrowserRouter>
           <AppRoutes />
         </BrowserRouter>
