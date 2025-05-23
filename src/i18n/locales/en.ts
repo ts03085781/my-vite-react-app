@@ -10,7 +10,7 @@ export default {
     page: {
       // 介紹頁面
       introduction: {
-        name: 'Yi-Lin Lai',
+        name: 'Yi-Lin Lai (Dean)',
         jobTitle: 'Front-End Engineer Sr.',
         title: 'Welcome to My Portfolio',
         description:

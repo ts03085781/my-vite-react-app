@@ -8,8 +8,8 @@ export default {
     page: {
       // 介紹頁面
       introduction: {
-        name: '賴毅霖',
-        jobTitle: 'Sr.前端工程師 ',
+        name: '賴毅霖 (Dean)',
+        jobTitle: '資深前端工程師 ',
         title: '歡迎來到我的作品集',
         description:
           '我是一個積極主動且擅長協作的前端工程師，曾將舊版系統重構至React，並規劃開發React & Vue共用組件。具備豐富的第三方API串接經驗，熟悉SEO優化與RWD / AWD設計。現管理9人前端團隊，重視效率與技術共享，致力於打造高效且兼具體驗的前端應用。最近則學習使用Vite建構React+TpreScript專案, 搭配Tailwind, Redux toolkit, React Router等套件建立個人Side Project',
