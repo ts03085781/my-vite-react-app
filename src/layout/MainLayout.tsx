@@ -24,7 +24,7 @@ import {
 const { Header, Sider, Content, Footer } = Layout;
 
 const MainLayout = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   const location = useLocation();
