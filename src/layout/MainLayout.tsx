@@ -102,7 +102,7 @@ const MainLayout = () => {
           trigger={null}
           collapsible
           collapsed={collapsed}
-          className="!h-[calc(100vh-133px)] bg-white text-gray-800 dark:bg-gray-900 dark:text-white"
+          className="!h-[calc(100vh-153px)] bg-white text-gray-800 dark:bg-gray-900 dark:text-white"
         >
           <Menu
             theme={theme === 'dark' ? 'dark' : 'light'}

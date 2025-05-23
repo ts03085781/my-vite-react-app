@@ -11,6 +11,16 @@ body {
     'Helvetica Neue', Arial, sans-serif;
 }
 
+/* 亮色模式樣式 */
+.ant-card,
+.ant-modal-content,
+.ant-select-dropdown,
+.ant-picker-dropdown,
+.ant-dropdown-menu {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+}
+
 /* 暗色模式樣式 */
 .dark .ant-card,
 .dark .ant-modal-content,
@@ -19,6 +29,7 @@ body {
 .dark .ant-dropdown-menu {
   background-color: #1f2937;
   color: white;
+  border: 1px solid #374151;
 }
 
 /* .dark .ant-typography, */
