@@ -71,55 +71,56 @@ const MainLayout = () => {
 
   return (
     <Layout className="min-h-screen bg-white text-gray-800 dark:bg-gray-900 dark:text-white">
-      <Sider
-        trigger={null}
-        collapsible
-        collapsed={collapsed}
-        className="bg-white text-gray-800 dark:bg-gray-900 dark:text-white"
-      >
-        <Menu
-          theme={theme === 'dark' ? 'dark' : 'light'}
-          // mode="inline"
-          selectedKeys={[location.pathname]}
-          className="bg-white text-gray-800 dark:bg-gray-900 dark:text-white"
-          items={sidebarItems}
+      <Header className="sticky top-0 z-50 p-0 flex items-center justify-between bg-blue-500 dark:bg-gray-800">
+        <Button
+          type="text"
+          icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+          onClick={() => setCollapsed(!collapsed)}
+          className="w-16 h-16 text-white"
         />
-      </Sider>
-      <Layout>
-        <Header className="p-0 flex items-center justify-between bg-blue-500 dark:bg-gray-800">
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            className="w-16 h-16 text-white"
-          />
-          <div className="flex items-center mr-6 space-x-4">
-            <div className="flex items-center mr-2 text-white gap-2">
-              {theme === 'dark' ? <MoonOutlined /> : <SunOutlined />}
-              <Switch checked={theme === 'dark'} onChange={handleThemeChange} />
-            </div>
-            <Dropdown
-              menu={{ items: languageItems, onClick: handleLanguageChange }}
-              placement="bottomRight"
-            >
-              <Button
-                type="text"
-                icon={<GlobalOutlined />}
-                className="text-white"
-              >
-                {language === 'en' ? 'English' : '繁體中文'}
-              </Button>
-            </Dropdown>
+        <div className="flex items-center mr-6 space-x-4">
+          <div className="flex items-center mr-2 text-white gap-2">
+            {theme === 'dark' ? <MoonOutlined /> : <SunOutlined />}
+            <Switch checked={theme === 'dark'} onChange={handleThemeChange} />
           </div>
-        </Header>
-        <Content className="m-5 p-6 rounded-lg min-h-[280px] bg-white dark:bg-gray-700">
+          <Dropdown
+            menu={{ items: languageItems, onClick: handleLanguageChange }}
+            placement="bottomRight"
+          >
+            <Button
+              type="text"
+              icon={<GlobalOutlined />}
+              className="text-white"
+            >
+              {language === 'en' ? 'English' : '繁體中文'}
+            </Button>
+          </Dropdown>
+        </div>
+      </Header>
+      <Layout>
+        <Sider
+          trigger={null}
+          collapsible
+          collapsed={collapsed}
+          className="!h-[calc(100vh-133px)] bg-white text-gray-800 dark:bg-gray-900 dark:text-white"
+        >
+          <Menu
+            theme={theme === 'dark' ? 'dark' : 'light'}
+            // mode="inline"
+            selectedKeys={[location.pathname]}
+            className="bg-white text-gray-800 dark:bg-gray-900 dark:text-white"
+            items={sidebarItems}
+            onClick={() => setCollapsed(true)}
+          />
+        </Sider>
+        <Content className="h-[calc(100vh-173px)] overflow-y-auto m-5 p-6 rounded-lg min-h-[280px] bg-white dark:bg-gray-700">
           <Outlet />
         </Content>
-        <Footer className="text-center bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-white">
-          ©{new Date().getFullYear()} My Portfolio - Created with React & Ant
-          Design
-        </Footer>
       </Layout>
+      <Footer className="text-center bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-white">
+        ©{new Date().getFullYear()} My Portfolio - Created with React & Ant
+        Design
+      </Footer>
     </Layout>
   );
 };
