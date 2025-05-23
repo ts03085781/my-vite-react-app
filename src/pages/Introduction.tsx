@@ -130,7 +130,7 @@ const Introduction = () => {
             <Title level={3}>{t('page.introduction.skills.title')}</Title>
             <Row gutter={[16, 16]}>
               {SKILLS_DATA.map((skillGroup) => (
-                <Col key={skillGroup.title} xs={12} sm={8} md={8}>
+                <Col key={skillGroup.title} xs={24} sm={12} md={8}>
                   <Card size="small" title={skillGroup.title}>
                     <ul className="list-disc list-inside">
                       {skillGroup.items.map((item) => (
