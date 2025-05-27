@@ -3,11 +3,16 @@ import globals from 'globals'; // 匯入全域變數設定
 import reactHooks from 'eslint-plugin-react-hooks'; // 匯入 React Hooks 的 ESLint 插件
 import reactRefresh from 'eslint-plugin-react-refresh'; // 匯入 React Refresh 的 ESLint 插件
 import tseslint from 'typescript-eslint'; // 匯入 TypeScript ESLint 解析器與規則
+import eslintConfigPrettier from 'eslint-config-prettier'; // 匯入 Prettier 設定, 讓 ESLint 遇到 Prettier 衝突時, 優先使用 Prettier 的格式
 
 export default tseslint.config(
   { ignores: ['dist'] }, // 忽略 dist 資料夾中的檔案
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended], // 繼承 ESLint 推薦規則與 TypeScript ESLint 推薦規則
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      eslintConfigPrettier,
+    ],
     files: ['**/*.{ts,tsx}'], // 指定 ESLint 作用的檔案類型為 .ts 與 .tsx
     languageOptions: {
       ecmaVersion: 2020, // 設定 ECMAScript 版本為 2020
@@ -25,5 +30,5 @@ export default tseslint.config(
         { allowConstantExport: true }, // 允許匯出常數
       ],
     },
-  }
+  },
 );
