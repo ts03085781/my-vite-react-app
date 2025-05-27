@@ -30,5 +30,5 @@ export default tseslint.config(
         { allowConstantExport: true }, // 允許匯出常數
       ],
     },
-  },
+  }
 );
