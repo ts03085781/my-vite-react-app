@@ -12,14 +12,9 @@ import {
   SunOutlined,
   MoonOutlined,
 } from '@ant-design/icons';
-import { toggleTheme } from '../store/slices/themeSlice';
-import { changeLanguage } from '../store/slices/languageSlice';
-import {
-  LanguageMenuItems,
-  SidebarMenuItems,
-  selectLanguage,
-  selectTheme,
-} from '../types';
+import { toggleTheme, selectTheme } from '@/store/slices/themeSlice';
+import { changeLanguage, selectLanguage } from '@/store/slices/languageSlice';
+import { LanguageMenuItems, SidebarMenuItems } from '@/types';
 
 const { Header, Sider, Content, Footer } = Layout;
 

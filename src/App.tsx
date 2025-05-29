@@ -1,8 +1,8 @@
 import { BrowserRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ConfigProvider, theme as antdTheme } from 'antd';
-import { AppRoutes } from './routes/AppRoutes';
-import { selectTheme } from './types';
+import { AppRoutes } from '@/routes/AppRoutes';
+import { selectTheme } from '@/store/slices/themeSlice';
 
 function App() {
   const theme = useSelector(selectTheme);
