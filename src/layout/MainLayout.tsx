@@ -99,20 +99,19 @@ const MainLayout = () => {
           trigger={null}
           collapsible
           collapsed={collapsed}
-          className="!h-[calc(100vh-153px)] bg-white text-gray-800 dark:bg-gray-900 dark:text-white"
+          className=" bg-white text-gray-800 dark:bg-gray-900 dark:text-white !fixed top-[64px] !h-fit !max-w-fit !w-fit md:!relative md:top-auto md:!h-auto"
         >
           <Menu
             theme={theme === 'dark' ? 'dark' : 'light'}
-            // mode="inline"
             selectedKeys={[location.pathname]}
-            className="bg-white text-gray-800 dark:bg-gray-900 dark:text-white"
+            className="bg-white text-gray-800 dark:bg-gray-900 dark:text-white w-[100vw] text-center md:w-auto md:text-left"
             items={sidebarItems}
             onClick={() =>
               setCollapsed(deviceType === DeviceType.Mobile ? true : collapsed)
             }
           />
         </Sider>
-        <Content className="h-[calc(100vh-173px)] overflow-y-auto m-5 p-6 rounded-lg min-h-[280px] bg-white dark:bg-gray-700">
+        <Content className="overflow-y-auto m-5 p-6 rounded-lg min-h-[280px] bg-white dark:bg-gray-700">
           <Outlet />
         </Content>
       </Layout>
