@@ -88,7 +88,7 @@ const Introduction = () => {
           <Card className="text-center mb-6">
             <Avatar
               src={avatarImage}
-              size={120}
+              size={200}
               className="mb-4"
               alt="avatar"
             />
