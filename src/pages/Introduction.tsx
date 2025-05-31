@@ -16,7 +16,7 @@ import {
   MailOutlined,
   PhoneOutlined,
 } from '@ant-design/icons';
-import avatarImage from '@/assets/images/maskRider.jpg';
+import avatarImage from '@/assets/images/avatarImage.jpg';
 
 const { Title, Paragraph } = Typography;
 
