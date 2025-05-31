@@ -15,6 +15,8 @@ import {
 import { toggleTheme, selectTheme } from '@/store/slices/themeSlice';
 import { changeLanguage, selectLanguage } from '@/store/slices/languageSlice';
 import { LanguageMenuItems, SidebarMenuItems } from '@/types';
+import useCheckScreenSize from '@/hooks/useCheckScreenSize';
+import { DeviceType } from '@/constants/enum';
 
 const { Header, Sider, Content, Footer } = Layout;
 
@@ -23,9 +25,9 @@ const MainLayout = () => {
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   const location = useLocation();
-
   const theme = useSelector(selectTheme);
   const language = useSelector(selectLanguage);
+  const deviceType = useCheckScreenSize();
 
   useEffect(() => {
     // 當語言改變時更新i18n
@@ -105,7 +107,9 @@ const MainLayout = () => {
             selectedKeys={[location.pathname]}
             className="bg-white text-gray-800 dark:bg-gray-900 dark:text-white"
             items={sidebarItems}
-            onClick={() => setCollapsed(true)}
+            onClick={() =>
+              setCollapsed(deviceType === DeviceType.Mobile ? true : collapsed)
+            }
           />
         </Sider>
         <Content className="h-[calc(100vh-173px)] overflow-y-auto m-5 p-6 rounded-lg min-h-[280px] bg-white dark:bg-gray-700">
