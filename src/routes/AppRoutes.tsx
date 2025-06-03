@@ -6,6 +6,7 @@ import MainLayout from '../layout/MainLayout';
 const Introduction = lazy(() => import('../pages/Introduction'));
 const Portfolio1 = lazy(() => import('../pages/Portfolio1'));
 const NotFound = lazy(() => import('../pages/NotFound'));
+const SkyLog = lazy(() => import('../pages/SkyLog'));
 
 export const AppRoutes = () => (
   <Suspense
@@ -21,6 +22,7 @@ export const AppRoutes = () => (
         <Route path="/" element={<Introduction />} />
         <Route path="/introduction" element={<Introduction />} />
         <Route path="/portfolio1" element={<Portfolio1 />} />
+        <Route path="/skylog" element={<SkyLog />} />
 
         {/* 404 頁面 */}
         <Route path="*" element={<NotFound />} />

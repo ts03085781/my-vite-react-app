@@ -3,6 +3,7 @@ export default {
     sidebar: {
       introduction: '簡介',
       portfolio: '作品集 1',
+      skyLog: '氣候手札',
     },
 
     page: {

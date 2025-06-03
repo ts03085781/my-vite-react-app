@@ -11,6 +11,7 @@ import {
   GlobalOutlined,
   SunOutlined,
   MoonOutlined,
+  CloudOutlined,
 } from '@ant-design/icons';
 import { toggleTheme, selectTheme } from '@/store/slices/themeSlice';
 import { changeLanguage, selectLanguage } from '@/store/slices/languageSlice';
@@ -63,6 +64,11 @@ const MainLayout = () => {
       key: '/portfolio1',
       icon: <AppstoreOutlined />,
       label: <Link to="/portfolio1">{t('sidebar.portfolio')}</Link>,
+    },
+    {
+      key: '/skyLog',
+      icon: <CloudOutlined />,
+      label: <Link to="/skyLog">{t('sidebar.skyLog')}</Link>,
     },
   ];
 

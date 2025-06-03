@@ -4,6 +4,7 @@ export default {
     sidebar: {
       introduction: 'Introduction',
       portfolio: 'Portfolio 1',
+      skyLog: 'SkyLog',
     },
 
     // 頁面標題
