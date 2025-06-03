@@ -5,11 +5,13 @@ import { I18nInitOptions } from '../types';
 // 導入翻譯文件
 import en from './locales/en';
 import zh from './locales/zh';
+import ja from './locales/ja';
 
 const i18nConfig: I18nInitOptions = {
   resources: {
     en,
     zh,
+    ja,
   },
   lng: 'en', // 默認語言
   fallbackLng: 'en', // 如果當前語言沒有對應的翻譯，則使用該語言

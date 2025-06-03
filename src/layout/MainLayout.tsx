@@ -15,7 +15,7 @@ import {
 } from '@ant-design/icons';
 import { toggleTheme, selectTheme } from '@/store/slices/themeSlice';
 import { changeLanguage, selectLanguage } from '@/store/slices/languageSlice';
-import { LanguageMenuItems, SidebarMenuItems } from '@/types';
+import { LanguageMenuItems, SidebarMenuItems, LanguageCode } from '@/types';
 import useCheckScreenSize from '@/hooks/useCheckScreenSize';
 import { DeviceType } from '@/constants/enum';
 
@@ -40,7 +40,7 @@ const MainLayout = () => {
   };
 
   const handleLanguageChange = ({ key }: { key: string }) => {
-    dispatch(changeLanguage(key as 'en' | 'zh'));
+    dispatch(changeLanguage(key as LanguageCode));
   };
 
   const languageItems: LanguageMenuItems = [
@@ -51,6 +51,10 @@ const MainLayout = () => {
     {
       key: 'zh',
       label: '繁體中文',
+    },
+    {
+      key: 'ja',
+      label: '日本語',
     },
   ];
 
