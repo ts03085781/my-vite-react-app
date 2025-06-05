@@ -111,6 +111,10 @@ export default {
       portfolio: {
         title: 'ポートフォリオ作品',
       },
+      skyLog: {
+        search: '検索',
+        selectDate: '日付を選択',
+      },
     },
 
     theme: {

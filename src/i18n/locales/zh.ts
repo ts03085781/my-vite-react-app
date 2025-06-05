@@ -102,6 +102,10 @@ export default {
       portfolio: {
         title: '作品展示',
       },
+      skyLog: {
+        search: '搜尋',
+        selectDate: '選擇日期',
+      },
     },
 
     theme: {

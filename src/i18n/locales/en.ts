@@ -123,6 +123,10 @@ export default {
       portfolio: {
         title: 'Portfolio Works',
       },
+      skyLog: {
+        search: 'Search',
+        selectDate: 'Select Date',
+      },
     },
 
     // 主題切換
