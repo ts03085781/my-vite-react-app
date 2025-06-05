@@ -139,10 +139,7 @@ const SkyLog = () => {
     return weatherElementArray;
   };
 
-  const datePickerOnChange: DatePickerProps['onChange'] = (
-    date,
-    dateString
-  ) => {
+  const datePickerOnChange: DatePickerProps['onChange'] = (date) => {
     const selectedDate = dayjs(date);
     const today = dayjs();
 
