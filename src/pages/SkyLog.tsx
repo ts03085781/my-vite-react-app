@@ -156,12 +156,13 @@ const SkyLog = () => {
       // 如果是今天，使用當前時間作為開始時間
       startTime = today.format('YYYY-MM-DDTHH:mm:ss');
     } else {
-      // 如果不是今天，使用選擇日期當天的凌晨 00:00:00
-      startTime = selectedDate.subtract(1, 'day').format('YYYY-MM-DDT18:00:00');
+      // 如果不是今天，使用選擇日期的凌晨 00:00:00
+      startTime =
+        selectedDate.subtract(1, 'day').format('YYYY-MM-DD') + 'T18:00:00';
     }
 
-    // 結束時間統一使用選擇日期的晚上 23:59:59
-    endTime = selectedDate.format('YYYY-MM-DDT23:59:59');
+    // 結束時間統一使用隔日的凌晨 00:00:00
+    endTime = selectedDate.add(1, 'day').format('YYYY-MM-DD') + 'T00:00:00';
 
     // 更新狀態
     setStartTime(startTime);
