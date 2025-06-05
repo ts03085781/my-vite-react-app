@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Select, DatePicker, DatePickerProps, Card, Button } from 'antd';
 import dayjs from 'dayjs';
 import { useTranslation } from 'react-i18next';
@@ -157,10 +157,10 @@ const SkyLog = () => {
       startTime = today.format('YYYY-MM-DDTHH:mm:ss');
     } else {
       // 如果不是今天，使用選擇日期當天的凌晨 00:00:00
-      startTime = selectedDate.format('YYYY-MM-DDT00:00:00');
+      startTime = selectedDate.subtract(1, 'day').format('YYYY-MM-DDT18:00:00');
     }
 
-    // 結束時間統一使用隔日的凌晨 00:00:00
+    // 結束時間統一使用選擇日期的晚上 23:59:59
     endTime = selectedDate.format('YYYY-MM-DDT23:59:59');
 
     // 更新狀態
@@ -213,11 +213,11 @@ const SkyLog = () => {
               >
                 {element.Time.map((time: any) => (
                   <Card
-                    className="card-3 w-[220px] flex flex-col"
+                    className="card-3 flex flex-col w-[240px]"
                     key={time.StartTime}
                   >
                     <p className="font-bold mb-2">
-                      {`${dayjs(time.StartTime).format('MM/DD 號 HH:mm')} ~ ${dayjs(time.EndTime).format('MM/DD 號 HH:mm')}`}
+                      {`${dayjs(time.StartTime).format('MM/DD HH:mm')} ~ ${dayjs(time.EndTime).format('MM/DD HH:mm')}`}
                     </p>
                     {time.ElementValue.map((value: any, index: number) => {
                       const keyNames = Object.keys(value);
