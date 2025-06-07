@@ -140,28 +140,22 @@ const SkyLog = () => {
   };
 
   const datePickerOnChange: DatePickerProps['onChange'] = (date) => {
-    const selectedDate = dayjs(date);
-    const today = dayjs();
-
-    // 檢查選擇的日期是否是今天
-    const isToday = selectedDate.isSame(today, 'day');
-
-    let startTime: string;
-    let endTime: string;
-
-    if (isToday) {
-      // 如果是今天，使用當前時間作為開始時間
-      startTime = today.format('YYYY-MM-DDTHH:mm:ss');
-    } else {
-      // 如果不是今天，使用選擇日期的凌晨 00:00:00
-      startTime =
-        selectedDate.subtract(1, 'day').format('YYYY-MM-DD') + 'T18:00:00';
+    if (date === null) {
+      setStartTime('');
+      setEndTime('');
+      return;
     }
 
-    // 結束時間統一使用隔日的凌晨 00:00:00
-    endTime = selectedDate.add(1, 'day').format('YYYY-MM-DD') + 'T00:00:00';
+    const selectedDate = dayjs(date);
+    const today = dayjs();
+    const isToday = selectedDate.isSame(today, 'day');
 
-    // 更新狀態
+    const startTime = isToday
+      ? today.format('YYYY-MM-DDTHH:mm:ss')
+      : selectedDate.subtract(1, 'day').format('YYYY-MM-DDT18:00:00');
+
+    const endTime = selectedDate.add(1, 'day').format('YYYY-MM-DDT00:00:00');
+
     setStartTime(startTime);
     setEndTime(endTime);
   };
