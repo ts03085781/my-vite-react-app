@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { Select, DatePicker, DatePickerProps, Card, Button } from 'antd';
+import { Select, DatePicker, DatePickerProps, Button, Collapse } from 'antd';
 import dayjs from 'dayjs';
 import { useTranslation } from 'react-i18next';
+import { WeatherLocation } from '../types/skyLog';
+import { WeatherElementSection } from '../components/WeatherElementSection';
 
 const apiUrl = `https://opendata.cwa.gov.tw/api/v1/rest/datastore`;
 const AuthorizationCode = 'CWA-0B9E9FF2-A15F-4F00-9826-83EE0954FF33';
@@ -160,6 +162,25 @@ const SkyLog = () => {
     setEndTime(endTime);
   };
 
+  const returnCollapseChildItem = () => {
+    if (!weatherData) return [];
+
+    return weatherData.map((item: WeatherLocation, index: number) => ({
+      key: index,
+      label: item.LocationName,
+      children: (
+        <>
+          {item.WeatherElement.map((element) => (
+            <WeatherElementSection
+              key={element.ElementName}
+              element={element}
+            />
+          ))}
+        </>
+      ),
+    }));
+  };
+
   return (
     <div>
       <h1 className="text-2xl font-bold mb-4">Weather Forecast</h1>
@@ -195,38 +216,7 @@ const SkyLog = () => {
         <Button onClick={fetchWeatherData}>{t('page.skyLog.search')}</Button>
       </div>
       <div className="mt-4">
-        {weatherData?.map((item: any) => (
-          <Card className="card-1 mb-4" key={item.LocationName}>
-            <p className="font-bold mb-4 text-3xl">{item.LocationName}</p>
-            {item.WeatherElement.map((element: any) => (
-              <div
-                className="card-2 flex flex-row flex-wrap gap-4"
-                key={element.ElementName}
-              >
-                {element.Time.map((time: any) => (
-                  <Card
-                    className="card-3 flex flex-col w-[240px]"
-                    key={time.StartTime}
-                  >
-                    <p className="font-bold mb-2">
-                      {`${dayjs(time.StartTime).format('MM/DD HH:mm')} ~ ${dayjs(time.EndTime).format('MM/DD HH:mm')}`}
-                    </p>
-                    {time.ElementValue.map((value: any, index: number) => {
-                      const keyNames = Object.keys(value);
-                      return (
-                        <div key={index}>
-                          {keyNames.map((key: string) => (
-                            <p key={key}>{value[key]}</p>
-                          ))}
-                        </div>
-                      );
-                    })}
-                  </Card>
-                ))}
-              </div>
-            ))}
-          </Card>
-        ))}
+        <Collapse items={returnCollapseChildItem()} defaultActiveKey={0} />
       </div>
     </div>
   );
