@@ -125,6 +125,7 @@ export default {
       },
       skyLog: {
         search: 'Search',
+        selectLocation: 'Select Location',
         selectDate: 'Select Date',
         locations: {
           yilin: 'Yilin',

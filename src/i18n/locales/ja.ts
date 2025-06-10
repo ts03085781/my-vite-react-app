@@ -113,6 +113,7 @@ export default {
       },
       skyLog: {
         search: '検索',
+        selectLocation: '場所を選択',
         selectDate: '日付を選択',
         locations: {
           yilin: '宜蘭県',

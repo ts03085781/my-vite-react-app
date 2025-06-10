@@ -104,6 +104,7 @@ export default {
       },
       skyLog: {
         search: '搜尋',
+        selectLocation: '選擇地點',
         selectDate: '選擇日期',
         locations: {
           yilin: '宜蘭縣',
