@@ -80,12 +80,7 @@ npm run lint
   - 使用 Prettier 自動格式化專案中所有符合規則的檔案 (直接修改檔案)。
 - `npm run format:check`
   - 使用 Prettier 檢查專案中所有檔案的格式是否符合規範 (不修改檔案)。
-
-# React + TypeScript + Vite
-
-此模板提供了一個最小化的設定，以便在 Vite 中使用 React，並具備 HMR 和一些 ESLint 規則。
-
-目前有兩個官方外掛程式可用：
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) 使用 [Babel](https://babeljs.io/) 進行快速刷新
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) 使用 [SWC](https://swc.rs/) 進行快速刷新
+- `prepare`
+  - 安裝 Husky 預設檔案所執行的語法, 會在執行 npm install 時觸發並執行。
+- `commit`
+  - 預執行 commit 時,可以執行此命令, 以讓 commit 信息符合規範
