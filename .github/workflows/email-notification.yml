@@ -16,6 +16,7 @@ jobs:
         uses: peter-evans/sendgrid-action@v1
         env:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          SCRIPT_FILEPATH: .github/email-sending-script.js
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
           EMAIL_TO: ts03085781@gmail.com
           SUBJECT: 'GitHub Repository Update Notification'
