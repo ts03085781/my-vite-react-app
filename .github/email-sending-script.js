@@ -14,7 +14,7 @@ const msg = {
 提交者：${process.env.GITHUB_ACTOR}
 提交時間：${new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })}
 提交 SHA：${process.env.GITHUB_SHA}
-提交訊息：${process.env.GITHUB_EVENT_PATH ? require(process.env.GITHUB_EVENT_PATH).head_commit.message : '無法獲取'}
+提交訊息：${process.env.GITHUB_EVENT_PATH ? process.env.GITHUB_EVENT_PATH.head_commit.message : '無法獲取'}
 查看變更：https://github.com/${process.env.GITHUB_REPOSITORY}/commit/${process.env.GITHUB_SHA}
   `,
   html: `
@@ -25,7 +25,7 @@ const msg = {
       <li><strong>提交者：</strong>${process.env.GITHUB_ACTOR}</li>
       <li><strong>提交時間：</strong>${new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })}</li>
       <li><strong>提交 SHA：</strong>${process.env.GITHUB_SHA}</li>
-      <li><strong>提交訊息：</strong>${process.env.GITHUB_EVENT_PATH ? require(process.env.GITHUB_EVENT_PATH).head_commit.message : '無法獲取'}</li>
+      <li><strong>提交訊息：</strong>${process.env.GITHUB_EVENT_PATH ? process.env.GITHUB_EVENT_PATH.head_commit.message : '無法獲取'}</li>
     </ul>
     <p><a href="https://github.com/${process.env.GITHUB_REPOSITORY}/commit/${process.env.GITHUB_SHA}">點擊查看變更內容</a></p>
   `,
