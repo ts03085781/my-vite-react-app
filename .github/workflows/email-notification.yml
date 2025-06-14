@@ -13,13 +13,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Send email notification
-        uses: peter-evans/sendgrid-action@v1
+        uses: licenseware/send-email-notification@v1
         env:
-          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
-          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
-          EMAIL_TO: ts03085781@gmail.com
-          SUBJECT: 'GitHub Repository Update Notification'
-          BODY: |
+          api-key: ${{ secrets.SENDGRID_API_KEY }}
+          from-email: ts03085781@gmail.com
+          to-email: ts03085781@gmail.com
+          subject: 'GitHub Repository Update Notification'
+          markdown-body: |
             A new push has been made to the main branch of your repository.
 
             Repository: ${{ github.repository }}
