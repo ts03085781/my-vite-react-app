@@ -9,8 +9,13 @@ jobs:
   send-email:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Send email notification
         uses: peter-evans/sendgrid-action@v1
+        with:
+          config-file: .github/sendgrid.js
         env:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
