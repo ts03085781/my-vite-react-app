@@ -22,4 +22,3 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_SHA: ${{ github.sha }}
-          GITHUB_EVENT_PATH: ${{ github.event_path }}
