@@ -19,3 +19,7 @@ jobs:
         run: node .github/email-sending-script.js
         env:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
