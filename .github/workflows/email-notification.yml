@@ -1,0 +1,29 @@
+name: Email Notification on Push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send email notification
+        uses: sendgrid/action-sendgrid@v1
+        env:
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ts03085781@gmail.com
+          SUBJECT: 'GitHub Repository Update Notification'
+          BODY: |
+            A new push has been made to the main branch of your repository.
+
+            Repository: ${{ github.repository }}
+            Branch: main
+            Commit: ${{ github.sha }}
+            Author: ${{ github.actor }}
+            Time: ${{ github.event.head_commit.timestamp }}
+
+            You can view the changes here:
+            ${{ github.event.head_commit.url }}
