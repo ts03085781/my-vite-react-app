@@ -15,22 +15,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Send email notification
-        uses: peter-evans/sendgrid-action@v1
+      - name: Send email with SendGrid
+        run: node .github/email-sending-script.js
         env:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
-          SCRIPT_FILEPATH: .github/email-sending-script.js
-          EMAIL_FROM: ts03085781@gmail.com
-          EMAIL_TO: ts03085781@gmail.com
-          SUBJECT: 'GitHub Repository Update Notification'
-          BODY: |
-            A new push has been made to the main branch of your repository.
-
-            Repository: ${{ github.repository }}
-            Branch: main
-            Commit: ${{ github.sha }}
-            Author: ${{ github.actor }}
-            Time: ${{ github.event.head_commit.timestamp }}
-
-            You can view the changes here:
-            ${{ github.event.head_commit.url }}
