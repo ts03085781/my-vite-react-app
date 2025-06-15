@@ -12,9 +12,19 @@ import {
   locations,
 } from '../constants/skyLog';
 
+interface WeatherApiResponse {
+  records: {
+    Locations: Array<{
+      Location: WeatherLocation[];
+    }>;
+  };
+}
+
 const SkyLog = () => {
   const { t } = useTranslation();
-  const [weatherData, setWeatherData] = useState<any>(null);
+  const [weatherData, setWeatherData] = useState<WeatherLocation[] | null>(
+    null
+  );
   const [locationCode, setLocationCode] = useState<string>(locations[0].value);
   const [startTime, setStartTime] = useState<string>('');
   const [endTime, setEndTime] = useState<string>('');
@@ -27,17 +37,20 @@ const SkyLog = () => {
       const response = await fetch(
         `${apiUrl}/${locationCode}?Authorization=${AuthorizationCode}&ElementName=${selectedElementName}&timeFrom=${startTime}&timeTo=${endTime}`
       );
-      const data = await response.json();
+      const data: WeatherApiResponse = await response.json();
       const weatherElementArray = returnWeatherElementArray(data);
       setWeatherData([...weatherElementArray]);
     } catch (error) {
       console.error('Error fetching weather data:', error);
     }
   };
-  const returnWeatherElementArray = (data: any) => {
-    const weatherElementArray: any[] = [];
-    data.records.Locations.forEach((location: any) => {
-      location.Location.forEach((weatherElement: any) => {
+
+  const returnWeatherElementArray = (
+    data: WeatherApiResponse
+  ): WeatherLocation[] => {
+    const weatherElementArray: WeatherLocation[] = [];
+    data.records.Locations.forEach((location) => {
+      location.Location.forEach((weatherElement) => {
         weatherElementArray.push(weatherElement);
       });
     });
@@ -93,6 +106,7 @@ const SkyLog = () => {
           value={locationCode}
           onChange={(value) => setLocationCode(value)}
           size="large"
+          getPopupContainer={(triggerNode) => triggerNode.parentElement}
         >
           {locations.map((location) => (
             <Select.Option key={location.value} value={location.value}>
@@ -105,6 +119,7 @@ const SkyLog = () => {
           onChange={(value) => setSelectedElementName(value)}
           style={{ width: 120 }}
           size="large"
+          getPopupContainer={(triggerNode) => triggerNode.parentElement}
         >
           {elementNameMap.map((elementName) => (
             <Select.Option key={elementName} value={elementName}>
