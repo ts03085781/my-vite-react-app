@@ -14,7 +14,7 @@ const meta: Meta<typeof WeatherCard> = {
   },
   decorators: [
     (Story) => (
-      <div style={{ margin: '3em' }}>
+      <div style={{ padding: '6em', backgroundColor: 'gray' }}>
         <Story />
       </div>
     ),
