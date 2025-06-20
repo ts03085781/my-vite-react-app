@@ -12,6 +12,7 @@ import {
   SunOutlined,
   MoonOutlined,
   CloudOutlined,
+  OpenAIOutlined,
 } from '@ant-design/icons';
 import { toggleTheme, selectTheme } from '@/store/slices/themeSlice';
 import { changeLanguage, selectLanguage } from '@/store/slices/languageSlice';
@@ -73,6 +74,11 @@ const MainLayout = () => {
       key: '/skyLog',
       icon: <CloudOutlined />,
       label: <Link to="/skyLog">{t('sidebar.skyLog')}</Link>,
+    },
+    {
+      key: '/AIChat',
+      icon: <OpenAIOutlined />,
+      label: <Link to="/AIChat">{t('sidebar.aiChat')}</Link>,
     },
   ];
 
