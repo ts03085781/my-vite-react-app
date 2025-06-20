@@ -4,6 +4,7 @@ export default {
       introduction: '簡介',
       portfolio: '作品集 1',
       skyLog: '氣候手札',
+      aiChat: 'AI 聊天',
     },
 
     page: {
@@ -128,6 +129,12 @@ export default {
           taichung: '臺中市',
           tainan: '臺南市',
         },
+      },
+      aiChat: {
+        title: 'AI聊天',
+        send: '送出',
+        placeholder: '請輸入您的訊息...',
+        aiOpeningRemarks: '你好，我是Dean的AI助手，有什麼可以幫助您的嗎？',
       },
     },
 

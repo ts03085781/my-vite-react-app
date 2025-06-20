@@ -4,6 +4,7 @@ export default {
       introduction: '自己紹介',
       portfolio: 'ポートフォリオ 1',
       skyLog: '天気予報',
+      aiChat: 'AI チャット',
     },
 
     page: {
@@ -137,6 +138,13 @@ export default {
           taichung: '台中市',
           tainan: '台南市',
         },
+      },
+      aiChat: {
+        title: 'AIチャット',
+        send: '送信',
+        placeholder: 'メッセージを入力してください...',
+        aiOpeningRemarks:
+          'こんにちは、ディーンのAIアシスタントです。どういうことですか？',
       },
     },
 

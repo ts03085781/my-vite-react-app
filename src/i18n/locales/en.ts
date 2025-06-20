@@ -5,6 +5,7 @@ export default {
       introduction: 'Introduction',
       portfolio: 'Portfolio 1',
       skyLog: 'SkyLog',
+      aiChat: 'AI Chat',
     },
 
     // 頁面標題
@@ -149,6 +150,13 @@ export default {
           taichung: 'Taichung',
           tainan: 'Tainan',
         },
+      },
+      aiChat: {
+        title: 'AI Chat',
+        send: 'Send',
+        placeholder: 'Please enter your message...',
+        aiOpeningRemarks:
+          "Hello, I am Dean's AI assistant, how can I help you?",
       },
     },
 
