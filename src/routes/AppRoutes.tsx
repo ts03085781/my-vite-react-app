@@ -3,11 +3,11 @@ import { lazy, Suspense } from 'react';
 import MainLayout from '../layout/MainLayout';
 
 // 延遲加載頁面
-const Introduction = lazy(() => import('../pages/Introduction'));
-const Portfolio1 = lazy(() => import('../pages/Portfolio1'));
-const NotFound = lazy(() => import('../pages/NotFound'));
-const SkyLog = lazy(() => import('../pages/SkyLog'));
-const AIChat = lazy(() => import('../pages/AIChat'));
+const Introduction = lazy(() => import('@/pages/Introduction'));
+const Portfolio1 = lazy(() => import('@/pages/Portfolio1'));
+const NotFound = lazy(() => import('@/pages/NotFound'));
+const SkyLog = lazy(() => import('@/pages/SkyLog'));
+const AIChat = lazy(() => import('@/pages/AIChat'));
 
 export const AppRoutes = () => (
   <Suspense
